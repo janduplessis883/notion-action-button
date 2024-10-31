@@ -4,7 +4,7 @@ import gspread
 from streamlit_gsheets import GSheetsConnection
 import streamlit_shadcn_ui as ui
 import time
-
+from io import StringIO
 
 st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_title="notion-action-button", page_icon=":material/sync:"
@@ -20,3 +20,10 @@ if action:
     st.info('Syncing...')
     time.sleep(5)
     st.rerun()
+
+
+st.download_button(
+    label="Download Empty CSV",
+    file_name="empty.csv",
+    data="text/csv"
+)
