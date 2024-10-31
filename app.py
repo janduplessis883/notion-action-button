@@ -3,6 +3,7 @@ import pandas as pd
 import gspread
 from streamlit_gsheets import GSheetsConnection
 import streamlit_shadcn_ui as ui
+import time
 
 
 st.set_page_config(
@@ -17,3 +18,5 @@ ttl_seconds = 20 * 60
 action = st.button("Sync NHS Numbers")
 if action:
     st.info('Syncing...')
+    time.sleep(5)
+    st.rerun()
