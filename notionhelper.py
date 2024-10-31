@@ -1,7 +1,9 @@
 from notion_client import Client
 import pprint
 import pandas as pd
+import streamlit as st
 
+my_notion_token = st.secrets["notion"]["token"]
 
 class NotionHelper:
     """
@@ -36,7 +38,7 @@ class NotionHelper:
 
     def authenticate(self):
         # Authentication logic for Notion
-        self.notion_token = "secret_AUqFdk1kzS6qe7iw0LVlPDQXJ1TrDxnM7n9ZIB5fOlB"
+        self.notion_token = my_notion_token
         self.notion = Client(auth=self.notion_token)
 
     def get_database(self, database_id):
