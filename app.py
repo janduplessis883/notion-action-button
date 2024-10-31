@@ -17,7 +17,7 @@ ttl_seconds = 20 * 60
 
 action = st.button("Sync NHS Numbers")
 if action:
-    st.info('Syncing...')
+    st.toast('Syncing...')
     time.sleep(5)
     st.rerun()
 
