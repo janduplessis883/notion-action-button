@@ -5,6 +5,8 @@ from streamlit_gsheets import GSheetsConnection
 import streamlit_shadcn_ui as ui
 import time
 from io import StringIO
+from notionhelper import NotionHelper
+
 
 notion_diabetes = "129fdfd68a97808bb5ffe511100fe0eb"
 notion_smi = "130fdfd68a978000a617fafb9e478dc8"
@@ -16,6 +18,7 @@ st.set_page_config(
 action = st.button("Sync NHS Numbers")
 if action:
     with st.spinner("Sync NHS numbers..."):
+        nh = NotionHelper()
 
         gsheets = GSheetsConnection(...)
         conn = st.connection("gsheets", type=GSheetsConnection)
@@ -26,6 +29,11 @@ if action:
         smi_register = conn.read(worksheet="smi_register")
         st.dataframe(smi_register)
 
+        dm_notion = nh.get_all_pages_as_dataframe(notion_diabetes)
+        smi_notion = nh.get_all_pages_as_dataframe(notion_smi)
+
+        st.dataframe(dm_notion)
+        st.dataframe(smi_notion)
 
 
 
