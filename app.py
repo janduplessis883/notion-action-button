@@ -6,24 +6,57 @@ import streamlit_shadcn_ui as ui
 import time
 from io import StringIO
 
+notion_diabetes = "129fdfd68a97808bb5ffe511100fe0eb"
+notion_smi = "130fdfd68a978000a617fafb9e478dc8"
+
 st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_title="notion-action-button", page_icon=":material/sync:"
 )
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-
-# Time-to-live in seconds (10 minutes)
-ttl_seconds = 20 * 60
-
 action = st.button("Sync NHS Numbers")
 if action:
-    st.toast('Syncing...')
-    time.sleep(5)
-    st.rerun()
+    with st.spinner("Sync NHS numbers..."):
+
+        gsheets = GSheetsConnection(...)
+        conn = st.connection("gsheets", type=GSheetsConnection)
+
+        dm_register = conn.read(worksheet="dm_register")
+        st.dataframe(dm_register)
+
+        smi_register = conn.read(worksheet="smi_register")
+        st.dataframe(smi_register)
 
 
-st.download_button(
-    label="Download Empty CSV",
-    file_name="empty.csv",
-    data="text/csv"
-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        st.download_button(
+            label="Download Empty CSV",
+            file_name="empty.csv",
+            data="text/csv"
+        )
+
+
+
+
+
+
+
+
+
+
+settings = st.checkbox('Settings')
+if settings:
+    st.write("DM + SMI Register - Google Sheet")
+    st.write("Notion Databases fixed IDs")
