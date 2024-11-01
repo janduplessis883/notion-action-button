@@ -13,7 +13,7 @@ notion_smi = "130fdfd68a978000a617fafb9e478dc8"
 st.set_page_config(
     initial_sidebar_state="collapsed", page_title="notion-action-button", page_icon=":material/sync:"
 )
-st.title(":material/sync: DM + SMI Register Sync")
+st.image("title.png")
 # Initialize session state variables for passcode verification
 if "passcode_verified" not in st.session_state:
     st.session_state["passcode_verified"] = False
