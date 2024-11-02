@@ -7,8 +7,8 @@ import time
 from io import StringIO
 from notionhelper import NotionHelper
 
-notion_diabetes = "129fdfd68a97808bb5ffe511100fe0eb"
-notion_smi = "130fdfd68a978000a617fafb9e478dc8"
+notion_diabetes = st.secrets["notion"]["notion_diabetes"]
+notion_smi = st.secrets["notion"]["notion_smi"]
 
 st.set_page_config(
     initial_sidebar_state="collapsed", page_title="notion-action-button", page_icon=":material/sync:"
